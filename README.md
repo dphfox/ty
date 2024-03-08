@@ -87,7 +87,7 @@ local NetworkObject = ty.Or(
 )
 ```
 
-`ty` functions are also exposed as methods on type defition objects, so you can easily chain them for greater clarity.
+`ty` functions are also exposed as methods on type definition objects, so you can easily chain them for greater clarity.
 
 ```Lua
 local NetworkPrimitive =
