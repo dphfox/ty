@@ -44,15 +44,15 @@ export type Maybe<Value> = Some<Value> | None
 local Maybe = {}
 
 function Maybe.Some<Value>(
-	value: Value
+    value: Value
 ): Some<Value>
-	return {some = true, value = value}
+    return {some = true, value = value}
 end
 
 function Maybe.None(
-	reason: string?
+    reason: string?
 ): None
-	return {some = false, reason = reason}
+    return {some = false, reason = reason}
 end
 
 return Maybe
@@ -68,22 +68,22 @@ natural way to define custom named types.
 
 ```Lua
 local NetworkPrimitive = ty.Or(
-	ty.Or(
-		ty.Or(
-			ty.Number,
-			ty.Boolean
-		),
-		ty.String
-	),
-	ty.Nil
+    ty.Or(
+        ty.Or(
+            ty.Number,
+            ty.Boolean
+        ),
+        ty.String
+    ),
+    ty.Nil
 )
 
 local NetworkObject = ty.Or(
-	ty.Or(
-		NetworkPrimitive,
-		ty.Array(NetworkPrimitive)
-	),
-	ty.MapOf(ty.String, NetworkPrimitive)
+    ty.Or(
+        NetworkPrimitive,
+        ty.Array(NetworkPrimitive)
+    ),
+    ty.MapOf(ty.String, NetworkPrimitive)
 )
 ```
 
@@ -91,24 +91,24 @@ local NetworkObject = ty.Or(
 
 ```Lua
 local NetworkPrimitive =
-	ty.Number
-	:Or(ty.Boolean)
-	:Or(ty.String)
-	:Or(ty.Nil)
+    ty.Number
+    :Or(ty.Boolean)
+    :Or(ty.String)
+    :Or(ty.Nil)
 
 local NetworkObject = 
-	NetworkPrimitive
-	:Or(NetworkPrimitive:Array())
-	:Or(ty.String:MapOf(NetworkPrimitive))
+    NetworkPrimitive
+    :Or(NetworkPrimitive:Array())
+    :Or(ty.String:MapOf(NetworkPrimitive))
 ```
 
 To test whether a value fits a type definition, call the `:Matches()` method on the type definition.
 
 ```Lua
 local valid = {
-	number = 2,
-	string = "foo",
-	array = {1, 2, 3, 4, 5}
+    number = 2,
+    string = "foo",
+    array = {1, 2, 3, 4, 5}
 }
 local invalid = os.time
 
@@ -124,26 +124,26 @@ static type equivalent to the type definition you constructed.
 type NetworkPrimitive = number | boolean | string | nil
 
 type NetworkObject =
-	NetworkPrimitive
-	| {NetworkPrimitive}
-	| {[string]: NetworkPrimitive}
+    NetworkPrimitive
+    | {NetworkPrimitive}
+    | {[string]: NetworkPrimitive}
 
 -- Imagine this came in over the network, so we can't be sure what's inside.
 local untrustedData: unknown = {
-	number = 2,
-	string = "foo",
-	array = {1, 2, 3, 4, 5}
+    number = 2,
+    string = "foo",
+    array = {1, 2, 3, 4, 5}
 }
 
 -- Returns the statically typed data we want, if it's safe to do so
 local trustedData: Maybe<NetworkObject> = NetworkObject:Cast(untrustedData)
 
 if trustedData.some then
-	-- The data matches!
-	print("Valid data!", trustedData.value)
+    -- The data matches!
+    print("Valid data!", trustedData.value)
 else
-	-- Something didn't line up with the type definition.
-	warn("The data is not valid!", trustedData.reason)
+    -- Something didn't line up with the type definition.
+    warn("The data is not valid!", trustedData.reason)
 end
 ```
 
@@ -170,20 +170,20 @@ useful for deeply nested types, to ensure your output log stays intelligible.
 
 ```Lua
 local NetworkPrimitive =
-	ty.Number
-	:Or(ty.Boolean)
-	:Or(ty.String)
-	:Or(ty.Nil)
-	:Nicknamed("NetworkPrimitive")
+    ty.Number
+    :Or(ty.Boolean)
+    :Or(ty.String)
+    :Or(ty.Nil)
+    :Nicknamed("NetworkPrimitive")
 
 local NetworkObject = 
-	NetworkPrimitive
-	:Or(NetworkPrimitive:Array())
-	:Or(ty.String:MapOf(NetworkPrimitive))
+    NetworkPrimitive
+    :Or(NetworkPrimitive:Array())
+    :Or(ty.String:MapOf(NetworkPrimitive))
 
 print(NetworkPrimitive.ExpectsType) --> NetworkPrimitive
 print(NetworkObject.ExpectsType)
-	--> NetworkPrimitive | {NetworkPrimitive} | {[string]: NetworkPrimitive}
+    --> NetworkPrimitive | {NetworkPrimitive} | {[string]: NetworkPrimitive}
 ```
 
 You can erase the static type parameter of a definition using `:Untyped()`, or redefine it using `:Retyped()` (bounding
@@ -217,29 +217,29 @@ better-defined tagged union, which can aid with type inference.
 
 ```Lua
 type Response = {
-	__tag: "success",
-	subject: string,
-	body: string
+    __tag: "success",
+    subject: string,
+    body: string
 } | {
-	__tag: "fail",
-	error: string
+    __tag: "fail",
+    error: string
 }
 
 local Success = ty.Struct({
-	subject: ty.String,
-	body: ty.String
+    subject: ty.String,
+    body: ty.String
 })
 local Fail = ty.Struct({
-	error: string
+    error: string
 })
 local Response = Success:IntoTagged("success"):Or(Fail:IntoTagged("fail"))
 
 print(Response.ExpectsType)
-	--> {subject: string, body: string} | {error: string}
+    --> {subject: string, body: string} | {error: string}
 
 local foo = Response:CastOrError({error = "Oh shit."})
 print(foo)
-	--> {__tag = "fail", error = "Oh shit."}
+    --> {__tag = "fail", error = "Oh shit."}
 ```
 
 Data can be converted to a string using `:IntoString()`, or converted to a number using `:IntoNumber()`. Critically,
@@ -247,13 +247,13 @@ Data can be converted to a string using `:IntoString()`, or converted to a numbe
 
 ```Lua
 local UserInfo = ty.Struct({
-	id = ty.Number:IntoString(),
-	colourHexCode: ty.String:IntoNumber(16) -- parse as hexadecimal
+    id = ty.Number:IntoString(),
+    colourHexCode: ty.String:IntoNumber(16) -- parse as hexadecimal
 })
 
 local info = UserInfo:CastOrError({
-	id = 123,
-	colourHexCode = "FF"
+    id = 123,
+    colourHexCode = "FF"
 })
 
 print(info) --> {id = "123", colourHexCode = 255}
