@@ -1,7 +1,7 @@
 
 <img src="gh-assets/logo.svg" alt="ty logo" align="left">
-<h2>ty</h2>
-<h3>An experiment in static type inference for runtime type checking.</h3>
+<h3>ty</h3>
+<p>An experiment in static type inference for runtime type checking.</p>
 <img src="gh-assets/clearfloat.svg" alt="">
 
 -----
