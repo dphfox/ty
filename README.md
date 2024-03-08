@@ -1,7 +1,9 @@
-<center>
-	<h2>ty</h2>
-	<h3>An experiment in static type inference for runtime type checking.</h3>
-</center>
+<p align="center">
+<img src="logo.svg" alt="ty logo">
+<h2>ty</h2>
+<h3>An experiment in static type inference for runtime type checking.</h3>
+</p>
+
 
 -----
 
