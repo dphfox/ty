@@ -34,7 +34,7 @@
 <feBlend mode="normal" in2="shape" result="effect1_innerShadow_1_5"/>
 </filter>
 <linearGradient id="paint0_linear_1_5" x1="75.5" y1="0.5" x2="75.5" y2="150.5" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FFE8E8"/>
+<stop stop-color="#FFF4E8"/>
 <stop offset="1" stop-color="#B0876A"/>
 </linearGradient>
 <radialGradient id="paint1_radial_1_5" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(73.2273 -9.50001) rotate(90) scale(150 175)">
