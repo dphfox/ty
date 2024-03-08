@@ -62,7 +62,7 @@ return Maybe
 
 ## Basic Usage
 
-Similar to `t`, you construct type defintions by calling into `ty` functions. You can save this type definition to a
+Similar to `t`, you construct type definitions by calling into `ty` functions. You can save this type definition to a
 variable, so you can test against it later. Type definitions can also be nested in other type definitions, providing a
 natural way to define custom named types.
 
