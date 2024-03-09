@@ -1,7 +1,8 @@
 
 <div align="center">
-<h2><img width=256 height=256 src="gh-assets/logo.png" alt="ty"></h2>
+<img width=256 height=256 src="gh-assets/logo.png" alt="ty">
 <h3>An experiment in static type inference for runtime type checking.</h3>
+<br><br>
 </div>
 
 The aim of this library is to figure out whether it's possible to create a `t`-like typechecking library entirely within
