@@ -4,8 +4,6 @@
 <h3>An experiment in static type inference for runtime type checking.</h3>
 </div>
 
-## Introduction
-
 The aim of this library is to figure out whether it's possible to create a `t`-like typechecking library entirely within
 strictly typed Luau, in a way which usefully cuts away redundant static types for values that are checked at runtime.
 
@@ -23,7 +21,7 @@ to make `ty` work.
 Just keep in mind that most of what you read here isn't functional, and probably won't be for the foreseeable future.
 This is an aspirational library representing a vision of how something like `ty` should work.
 
-## A note on dependencies
+## Dependencies
 
 `ty` requires my own `Maybe` library to work. It's not that hard to implement; it's in the code block below.
 
