@@ -1,9 +1,10 @@
 
-<img src="gh-assets/logo.svg" alt="ty logo" align="left">
+<font align="center">
+<img width=256 height=256 src="gh-assets/logo.png" alt="ty logo" align="center">
 <h3>ty</h3>
 <p>An experiment in static type inference for runtime type checking.</p>
 <img src="gh-assets/clearfloat.svg" alt="">
-
+</font>
 
 ## Introduction
 
