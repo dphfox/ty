@@ -277,3 +277,11 @@ for the time being. I'm interested in keeping an eye on how things develop in th
 If you work on Luau itself, or are interested in seeing what features of Luau might be worth expanding upon, feel free
 to use `ty` as a point of reference in your work. I would be happy if it facilitated interesting discussions. Just maybe
 don't take my written type definitions too seriously - they might be ludicrous!
+
+## License
+
+Licensed the same way as all of my open source projects: BSD 3-Clause + Security Disclaimer.
+
+As with all other projects, you accept responsibility for choosing and using this project.
+
+See [LICENSE.md](./LICENSE.md) or [the license summary](https://github.com/dphfox/licence) for details.
